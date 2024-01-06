@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<script src="https://kit.fontawesome.com/7a43d702a5.js" crossorigin="anonymous"></script>	
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>D/code | passwordBot</title>
+</head>
+<body>
+	<center>
+		   <div class="Contenedor">
+
+		   	     
+	  <div class="contentFor" id="contentGenrator" >
+	  	<div class="config" id="configID">  
+	  		   <p style="text-align: center; margin-bottom: 10px;">Configuracion</p>
+	
+	  		<input autocomplete="off" type="checkbox" id="checkboxMayusculas" name="">
+	  		<label id="mayusculasP">Mayusculas</label>
+	  		    <br>
+	  		     <input autocomplete="off" type="checkbox"  id="checkboxMinusculas" name="">
+	  		    <label id="minusculasP">Minusculas</label>
+	  		    <br>
+	  		     <input autocomplete="off" type="checkbox" id="checkboxNumeros" name="">
+	  		    <label  id="numerosP">Numeros</label>
+	  		    <br>
+	  		       <input  autocomplete="off" type="checkbox" id="checkboxLestrasEspeciales" name="">
+	  		    <label id="letrasExtrasP">Signos</label>
+	  		    <br>
+	  		  
+	    <label style="margin-top:30px; display: block;">Cantidad de letras : <b id="rangeP">0</b></label>
+	    <input type="range" min="4" max="64" id="rangeInput" style="width:50%;" name="">
+	    <br>
+	    <button class="buttonGuardar" id="aplicarCambios">Aplicar</button>
+<br><br>
+	 </div>
+
+	 <div class="contentGenratorValue" id="contentValue">
+	 	<p id="pAlert" style=" width: auto;">Hola, Primero has la configuracion despues guardas</p>
+	 	   <input type="hidden" value="" placeholder="Ingresa el texto que desea incluir">
+<button id="buttonCopiar" style="display: none;">copiar <i class="fa-sharp fa-solid fa-copy"></i></button><p id="pCopiar"></p>
+	 	   <div id="itemPassword" style="display: none;"><p id="resultado"></p></div>
+	 </div>
+	  </div>
+		   </div>
+	</center>
+<script type="text/javascript" src="codigo.js"></script>
+</body>
+</html>
