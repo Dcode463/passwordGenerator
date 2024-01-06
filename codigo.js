@@ -103,7 +103,11 @@ function letraAleatoriasMayus(){
     return LetraAleatoriaMayus;
 }
 function letraAleatoriasEspeciales(){
-	let signos = ["!","$","%","&","?","¿"];
+	let signos =  [
+        '!', '"', '#', '$', '%', '&', "'", '(', ')', '*',
+        '+', ',', '-', '.', '/', ':', ';', '<', '=', '>',
+        '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'
+    ];
     var signosR = Math.floor(Math.random() * signos.length);
     var signosAleatorios = signos[signosR]; 
     return signosAleatorios;
