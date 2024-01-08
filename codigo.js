@@ -73,7 +73,7 @@ buttonCopiar.addEventListener('click', () => {
 	  window.getSelection().addRange(copiar);
 	  try { 
    const exito = document.execCommand('copy');
-   const mensaje = exito ? ' contenido copiado ' : 'la copia no fue exitosa';
+   const mensaje = exito ? '  copiado ' : 'la copia no fue exitosa';
    buttonCopiar.innerHTML = mensaje + ' <i class="fa-solid fa-thumbs-up fa-fade"></i>';
    buttonCopiar.style.background = 'royalblue'
    setTimeout(()=> { buttonCopiar.innerHTML = `copiar  <i class="fa-sharp fa-solid fa-copy"></i>`;
