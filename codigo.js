@@ -74,8 +74,11 @@ buttonCopiar.addEventListener('click', () => {
 	  try { 
    const exito = document.execCommand('copy');
    const mensaje = exito ? ' contenido copiado ' : 'la copia no fue exitosa';
-   pCopiar.textContent = mensaje;
-   setTimeout(()=> { pCopiar.textContent = ''}, 1000)
+   buttonCopiar.innerHTML = mensaje + ' <i class="fa-solid fa-thumbs-up fa-fade"></i>';
+   buttonCopiar.style.background = 'royalblue'
+   setTimeout(()=> { buttonCopiar.innerHTML = `copiar  <i class="fa-sharp fa-solid fa-copy"></i>`;
+   buttonCopiar.style.background = 'black'
+}, 1000)
 	  }catch(err){
 	  	console.error('error al copiar el contenido : ', err);
 	  }
@@ -120,7 +123,7 @@ pAlert.textContent = "Selecione los terminos que desea en la configuracion";
  contentValue.style.opacity = "0.2";
  } else{
     contentValue.style.opacity = "20";
-    pAlert.textContent = "D/code";
+    pAlert.textContent = "";
  	configID.style.border = "none";
 	contentGenradorItem.style.display = "block";
  	resultado.innerHTML= `Espere <i class="fa-solid fa-spinner fa-spin"></i>`;
@@ -152,7 +155,6 @@ function generator(){
   	   pNew1.classList.add("pNew1");
       resultado.appendChild(pNew1)
   }
-
 if (mayusculas === true) {
  let pNew2 = document.createElement('B');
       pNew2.innerHTML = letraAleatoriasMayus().toUpperCase(); 

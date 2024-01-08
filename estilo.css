@@ -5,6 +5,31 @@
 body{
 	background:   #1c2833 ;
 }
+.containerOfButton{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 1%;
+	right: 1%;
+	width: auto;
+}
+.buttons {
+	transition: 0.4s;
+	background: black;
+	color: white;
+	border: none;
+	padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin: 10px;
+	font-size: 20px!important;
+}
+
+.buttons:hover{
+	background: royalblue;
+	color: white; 
+}
 nav{
 	z-index: 2000;
 	position: fixed;
@@ -134,21 +159,9 @@ color: white;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%,-50%);
-}
-#buttonCopiar{
-	position: absolute;
-	bottom: 10%;
-	right: 10%;
-	background: black;
-	color: white;
-	border: none;
-	padding: 5px;
-	border-radius: 5px;
-	cursor: pointer;
-}
-#buttonCopiar:hover{
-	background: royalblue;
-	color: white; 
+	text-align: center;
+	font-size: 25px;
+    width: 100%;
 }
 #pCopiar{
 	font-size: 12px; 
@@ -211,6 +224,7 @@ color: white;
 	padding: 4px;
 color: white;
 
+
 }
 .pAlert{
 	padding: 0;
@@ -222,22 +236,22 @@ color: white;
 	width:100%;
 	margin-right: 100px;
 	background:transparent;
-
+    font-size: 25px;
 }
 #resultado b {
 	display: inline-block;
+
 }
 #resultado{
 	display: inline-block;
 }
-#buttonCopiar{
-
-	bottom: 10%;
+.containerOfButton{
 	background: black;
 	color: white;
 	border: none;
 	padding: 5px;
 	border-radius: 5px;
+	cursor: pointer;
 }
 }
 @media only screen and (max-width:686px){
@@ -334,14 +348,9 @@ input{
 #resultado{
 	display: inline-block;
 }
-#buttonCopiar{
+.containerOfButton{
+    bottom: -40%;
 
-	bottom: 15%;
-	background: black;
-	color: white;
-	border: none;
-	padding: 5px;
-	border-radius: 5px;
 }
 .contentFor{
 	padding: 50px;
