@@ -1,5 +1,4 @@
-start()
-function start(){
+
 const rango = document.getElementById('rangeInput');
 const chexboxMayusculas = document.getElementById('checkboxMayusculas')
 const chexboxMinusculas = document.getElementById('checkboxMinusculas')
@@ -9,6 +8,7 @@ const chexboxletrasEspeciales = document.getElementById('checkboxLestrasEspecial
 const contentGenradorItem = document.getElementById('itemPassword');
 const buttonCopiar = document.getElementById('buttonCopiar');
 const aplicadordecambios = document.getElementById('aplicarCambios');
+const buttonRegenerar = document.getElementById('regenerar')
 var mayusculas = false;
 var minusculas = false;
 var numeros = false;
@@ -115,21 +115,22 @@ function letraAleatoriasEspeciales(){
     var signosAleatorios = signos[signosR]; 
     return signosAleatorios;
 }
-aplicadordecambios.addEventListener('click', function() {
- 	buttonCopiar.style.display = "none";
- if (mayusculas === false && minusculas === false && numeros === false && letrasEspeciales === false  ) {
+
+const validor = () => {
+	buttonCopiar.style.display = "none";
+if (mayusculas === false && minusculas === false && numeros === false && letrasEspeciales === false  ) {
 pAlert.textContent = "Selecione los terminos que desea en la configuracion";
- configID.style.border = "solid 2px grey"
- contentValue.style.opacity = "0.2";
- } else{
-    contentValue.style.opacity = "20";
-    pAlert.textContent = "";
- 	configID.style.border = "none";
-	contentGenradorItem.style.display = "block";
- 	resultado.innerHTML= `Espere <i class="fa-solid fa-spinner fa-spin"></i>`;
+configID.style.border = "solid 2px grey"
+contentValue.style.opacity = "0.2";
+} else{
+   contentValue.style.opacity = "20";
+   pAlert.textContent = "";
+	configID.style.border = "none";
+   contentGenradorItem.style.display = "block";
+	resultado.innerHTML= `Espere <i class="fa-solid fa-spinner fa-spin"></i>`;
 generator()
- }
-});
+}
+}
 
 
 function generator(){
@@ -185,4 +186,7 @@ if (mayusculas === true) {
       }
   
 }
-}
+
+buttonRegenerar.onclick = () => {buttonRegenerar.innerHTML = `Regenerar <i class="fa-solid fa-rotate fa-spin"></i>`; validor(); setTimeout(()=> {buttonRegenerar.innerHTML = `Regenerar <i class="fa-solid fa-rotate"></i></i>`},100)}
+
+aplicadordecambios.onclick = () => validor()
