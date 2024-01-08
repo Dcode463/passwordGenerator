@@ -245,14 +245,7 @@ color: white;
 #resultado{
 	display: inline-block;
 }
-.containerOfButton{
-	background: black;
-	color: white;
-	border: none;
-	padding: 5px;
-	border-radius: 5px;
-	cursor: pointer;
-}
+
 }
 @media only screen and (max-width:686px){
 	nav{
