@@ -9,6 +9,8 @@ const contentGenradorItem = document.getElementById('itemPassword');
 const buttonCopiar = document.getElementById('buttonCopiar');
 const aplicadordecambios = document.getElementById('aplicarCambios');
 const buttonRegenerar = document.getElementById('regenerar')
+const buttonOpenContainerKey = document.getElementById('buttonMenuKey');
+const resultado = document.getElementById('resultado')
 var mayusculas = false;
 var minusculas = false;
 var numeros = false;
@@ -135,7 +137,6 @@ generator()
 
 function generator(){
 	buttonCopiar.style.display = "block"; 
-	const resultado = document.getElementById('resultado')
 	 	resultado.textContent = "";
 	 	var txtExtraBucle = 0;
      for(i = 0; i < rango.value; i++){
@@ -187,6 +188,100 @@ if (mayusculas === true) {
   
 }
 
+////////////////////////////update >>> 7/1/2024
+const objectDocument = {
+	containerKeys : {
+		element : document.getElementById('containerKeys'),
+		open : () => objectDocument.containerKeys.element.style.display = 'block',
+		close : () => objectDocument.containerKeys.element.style.display = 'none'
+	},
+	sobrePonerBody : {
+		element : document.getElementById('sobrePoner'),
+		open : () => objectDocument.sobrePonerBody.element.style.display = 'block',
+		close : () => objectDocument.sobrePonerBody.element.style.display = 'none'
+	},
+ //////////////// buttons
+		 buttoncloseContainerKey :  document.getElementById('closeContainerKey'),
+		 buttonSaveKey : document.getElementById('guardar'),
+	//// container saveKey
+	containerSaveKey : {
+	  element : document.getElementById('containerSave'),
+	  open : () => objectDocument.containerSaveKey.element.style.display = 'block',
+	  close : () => objectDocument.containerSaveKey.element.style.display = 'none'
+	},
+inputPasswordS : document.getElementById('PasswordOfSave'),
+inputCommitS : document.getElementById('commitOfSave'),
+/// buttons of saveKey
+buttonCancelSave : document.getElementById('saveCancel'),
+buttonSave : document.getElementById('saveConfirm')
+}
+const openDataBase = nameDataBase => new Promise ((resolve,reject) => { 
+	const dataBase = indexedDB.open(nameDataBase); 
+	dataBase.onupgradeneeded = () => {
+		const result = dataBase.result;
+		const requestCreatorTable = result.createObjectStore('memori',{autoIncrement : true})
+		requestCreatorTable.createIndex('commit','commit', {unique : false});
+		requestCreatorTable.createIndex('password', 'password', {unique : false});
+		requestCreatorTable.createIndex('fecha', 'fecha', {unique : false});
+		resolve(true)
+	}
+	dataBase.onsuccess = () => resolve (false);
+   dataBase.onerror = () => resolve(20);
+	})
+const pushDataBase = (password, commit, date) => new Promise ((resolve,reject) => {
+	let dt = indexedDB.open('memori');
+	dt.onsuccess = () => {
+		 let db = dt.result;
+		 let trasaction = db.transaction('memori','readwrite');
+		 let objectStore = trasaction.objectStore('memori');
+		 let dataSend = {commit : commit, password : password, fecha : date};
+		 objectStore.add(dataSend);
+		 trasaction.oncomplete = () => resolve(true);
+		 trasaction.onerror = () => reject(true);
+	}
+  })
+const requestPasswords = () => 
+{// pendiente
+}
+const openContainerKey = async () => {
+	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
+	let openDataBaseRequest = await openDataBase('memori')
+    if(openDataBaseRequest) console.log('creando base de datos')
+	else requestPasswords()
+}
+const closeContainerKey = () => { objectDocument.sobrePonerBody.close(); objectDocument.containerKeys.close();
+    
+}
+const saveFunction = () => { objectDocument.sobrePonerBody.open(); objectDocument.containerSaveKey.open();
+   objectDocument.inputPasswordS.value = resultado.textContent;
+}
+const closeSaveFunction = () => { objectDocument.sobrePonerBody.close(); objectDocument.containerSaveKey.close()
+	objectDocument.inputPasswordS.value = ''
+}
+const saveKeyFunction = async () => {
+let date = new Date();
+let fecha = date.getFullYear() + "-"  + date.getMonth() + 1 + "-" + (date.getDate() < 10 ? "0" : "") + date.getDate()
+let validorDataBase = await openDataBase();
+let pushData = await pushDataBase(objectDocument.inputPasswordS.value,objectDocument.inputCommitS.value,fecha)
+if(pushData) {objectDocument.buttonSave.innerHTML  = 'Contraseña guardada <i class="fa-solid fa-check"></i>'; setTimeout(()=> {
+	objectDocument.buttonSave.innerHTML = 'Guardar';
+   objectDocument.sobrePonerBody.close(); objectDocument.containerSaveKey.close();
+},1000)}
+}
+//////////////////////////////////////////////////// Events
+
 buttonRegenerar.onclick = () => {buttonRegenerar.innerHTML = `Regenerar <i class="fa-solid fa-rotate fa-spin"></i>`; validor(); setTimeout(()=> {buttonRegenerar.innerHTML = `Regenerar <i class="fa-solid fa-rotate"></i></i>`},100)}
 
 aplicadordecambios.onclick = () => validor()
+
+buttonOpenContainerKey.onclick = () => openContainerKey()
+
+objectDocument.buttoncloseContainerKey.onclick = () => closeContainerKey ()
+
+objectDocument.buttonSaveKey.onclick = () => saveFunction ()
+
+objectDocument.buttonCancelSave.onclick = () => closeSaveFunction ()
+
+objectDocument.inputPasswordS.onchange = () => resultado.textContent = objectDocument.inputPasswordS.value
+
+objectDocument.buttonSave.onclick = () => saveKeyFunction()

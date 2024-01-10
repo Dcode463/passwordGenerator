@@ -5,6 +5,40 @@
 body{
 	background:   #1c2833 ;
 }
+#sobrePoner {
+	z-index: 40000;
+	width: 100%;
+	height: 100vh;
+	padding: 10px;
+	backdrop-filter: blur(30px);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	background:transparent;
+}
+/* ///////////////////// container key */
+#closeContainerKey{
+	position: absolute;
+	right:-1%;
+	top: -1%;
+	background-color:royalblue;
+	border-radius: 15px;
+	border: none;
+	cursor: pointer;
+}
+#containerKeys{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	padding: 10px;
+	background-color:white;
+	width: 60%;
+	height: 60%;
+	z-index: 40000;
+	border-radius: 15px;
+}
 .containerOfButton{
 	display: flex;
 	justify-content: center;
@@ -30,6 +64,88 @@ body{
 	background: royalblue;
 	color: white; 
 }
+#buttonMenuKey {
+	z-index: 30000;
+
+	position: absolute;
+	right: 3%;
+	background-color: royalblue;
+	border: none;
+	padding: 10px;
+	border-radius: 10px;
+	top: 3%;
+	cursor: pointer;
+}
+#noKeys {
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#noneKeyGif{
+	width: 50%;
+}
+/* /////////////////container save key//////////////////// */
+#containerSave { z-index: 50000;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width:auto;
+	height:auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.containerInputsSave {
+	border-radius: 15px;
+
+	background-color: white;
+	margin-bottom: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.containerInputsSave input {
+	margin: 10px;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 0 5px rgb(0,0,0, 0.2);
+	padding: 10px;
+}
+#saveConfirm{
+	background-color: royalblue;
+
+}
+#saveCancel{
+	background-color: white;
+	color: black;
+	opacity: 0.9;
+}
+#saveCancel:hover{
+	opacity: 1;
+}
+#saveConfirm:hover{
+	background-color: black;
+	opacity: 1;
+}
+.buttonsOfPromtsSave {
+	opacity: 0.9;
+	margin: 5px;
+	cursor: pointer;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	color: white;
+	border-radius: 10px;
+}
+/* //////////////////////////////////////////////////////////////////// */
 nav{
 	z-index: 2000;
 	position: fixed;
@@ -244,8 +360,8 @@ color: white;
 }
 #resultado{
 	display: inline-block;
-
-
+   width: auto;
+   cursor: pointer;
 }
 
 }
@@ -335,6 +451,7 @@ input{
 	width:100%;
 	margin-right: 100px;
 	background:transparent;
+	cursor: pointer;
 
 }
 #resultado b {

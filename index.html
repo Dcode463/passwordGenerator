@@ -10,14 +10,16 @@
 	<link rel="stylesheet" type="text/css" href="normalize.css">
 	<link rel="icon" href="media/icono.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>D/code | passwordBot</title>
+	<title>D/Passwords</title>
 </head>
 <body>
-	<center>
 		   <div class="Contenedor">
 
 		   	     
 	  <div class="contentFor" id="contentGenrator" >
+		<div id="sobrePoner" style="display: none;"></div>
+	<button id="buttonMenuKey"><img src="media/icons/passwordKey.png" alt=""></button>
+
 	  	<div class="config" id="configID">  
 	  		   <p style="text-align: center; margin-bottom: 10px;">Configuracion</p>
 	
@@ -34,7 +36,7 @@
 	  		    <label id="letrasExtrasP">Signos</label>
 	  		    <br>
 	  		  
-	    <label style="margin-top:30px; display: block;">Cantidad de letras : <b id="rangeP">0</b></label>
+	    <label style="margin-top:30px; display: block;">Caracteres : <b id="rangeP">0</b></label>
 	    <input type="range" min="4" max="64" id="rangeInput" autocomplete="off" value="0" style="width:50%;" name="">
 	    <br>
 	    <button class="buttonGuardar" id="aplicarCambios">Aplicar</button>
@@ -47,11 +49,26 @@
 <div class="containerOfButton"><button class="buttons" id="buttonCopiar" style="display: none;">copiar  <i class="fa-sharp fa-solid fa-copy"></i></button><p id="pCopiar"></p>
 	<button class="buttons" id="guardar">Guardar <i class="fa-solid fa-file-arrow-up"></i></button>
 	<button class="buttons" id="regenerar">Regenerar <i class="fa-solid fa-rotate"></i></i></button></div>
-	 	   <div id="itemPassword" style="display: none;"><p id="resultado"></p></div>
+	 	   <div id="itemPassword" style="display: none;"><p id="resultado" spellcheck="false" contenteditable="true"></p></div>
 	 </div>
-	  </div>
+
+	 <!-- ////////////////////////////////////////////////// container key -->
+                <div id="containerKeys" style="display: none;">
+<button id="closeContainerKey"> <img src="media/icons/close.png" alt=""></button>
+<div id="noKeys"><img id="noneKeyGif" src="media/errorAnimation.gif" alt=""><p id="alertNoKeys">Ups, no has registrado ninguna contraseña</p></div>
+				</div>
+	<!-- /////////////////////////////  container save key -->
+	<div id="containerSave" style="display: none;">
+<div class="containerInputsSave">
+   <input  type="text" placeholder="Password" id="PasswordOfSave">
+   <input  type="text" placeholder="Commit" id="commitOfSave">
+</div>
+<button id="saveCancel"  class="buttonsOfPromtsSave">Cancelar</button>
+<button id="saveConfirm" class="buttonsOfPromtsSave">Guardar</button>
+
+	</div>
+	</div>
 		   </div>
-	</center>
 <script type="text/javascript" src="codigo.js"></script>
 </body>
 </html>
