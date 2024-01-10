@@ -56,7 +56,7 @@ chexboxletrasEspeciales.addEventListener('change', function(){
 		letrasEspeciales = false;
 	}
 })
-chexboxNumeros.addEventListener('change', function(){
+chexboxNumeros.addEventListener('change', function(){ 
 	if (chexboxNumeros.checked){
 		    numerosP.innerHTML = ` Listo | <P style ="color:grey; display:inline-block; font-size :12px;">Numeros : 1234</P>`;
 		    numeros = true;
@@ -211,6 +211,11 @@ const objectDocument = {
 	},
 inputPasswordS : document.getElementById('PasswordOfSave'),
 inputCommitS : document.getElementById('commitOfSave'),
+noKeysContainerKey : {
+	element : document.getElementById('noKeys'),
+	open : () => objectDocument.noKeysContainerKey.element.style.display = 'flex',
+	close : () => objectDocument.noKeysContainerKey.element.style.display = 'none'
+}, 
 /// buttons of saveKey
 buttonCancelSave : document.getElementById('saveCancel'),
 buttonSave : document.getElementById('saveConfirm')
@@ -240,14 +245,25 @@ const pushDataBase = (password, commit, date) => new Promise ((resolve,reject) =
 		 trasaction.onerror = () => reject(true);
 	}
   })
-const requestPasswords = () => 
-{// pendiente
+const requestPasswords = () => new Promise ((resolve,reject) => {
+	let db = indexedDB.open('memori');
+	  db.onsuccess = () => {
+         let rs = db.result;
+		 let trasaction = rs.transaction('memori', 'readwrite');
+		 let objectStore = trasaction.objectStore('memori')
+		 let response = objectStore.getAll();
+		 trasaction.oncomplete = (e) => resolve(response.result)
+		 trasaction.onerror = (e) => reject(e)
 }
+})
 const openContainerKey = async () => {
 	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
 	let openDataBaseRequest = await openDataBase('memori')
-    if(openDataBaseRequest) console.log('creando base de datos')
-	else requestPasswords()
+   let resquestObjectKeys = await requestPasswords()
+
+if(resquestObjectKeys.value === 0)  objectDocument.noKeysContainerKey.open()
+else { objectDocument.noKeysContainerKey.close();
+}
 }
 const closeContainerKey = () => { objectDocument.sobrePonerBody.close(); objectDocument.containerKeys.close();
     
@@ -259,9 +275,10 @@ const closeSaveFunction = () => { objectDocument.sobrePonerBody.close(); objectD
 	objectDocument.inputPasswordS.value = ''
 }
 const saveKeyFunction = async () => {
+objectDocument.buttonSave.innerHTML  = 'Guardando <i class="fa-solid fa-database fa-fade"></i>'
 let date = new Date();
 let fecha = date.getFullYear() + "-"  + date.getMonth() + 1 + "-" + (date.getDate() < 10 ? "0" : "") + date.getDate()
-let validorDataBase = await openDataBase();
+let validorDataBase = await openDataBase('memori');
 let pushData = await pushDataBase(objectDocument.inputPasswordS.value,objectDocument.inputCommitS.value,fecha)
 if(pushData) {objectDocument.buttonSave.innerHTML  = 'Contraseña guardada <i class="fa-solid fa-check"></i>'; setTimeout(()=> {
 	objectDocument.buttonSave.innerHTML = 'Guardar';

@@ -19,25 +19,42 @@ body{
 }
 /* ///////////////////// container key */
 #closeContainerKey{
-	position: absolute;
-	right:-1%;
-	top: -1%;
+	position: sticky;
+	left:-5%;
+	margin-left:-15%;
+	top: 50%;
+	transform: translate(-5%,-50%);
 	background-color:royalblue;
 	border-radius: 15px;
 	border: none;
 	cursor: pointer;
 }
 #containerKeys{
+	scroll-behavior: smooth;
+	overflow: auto;
+	overflow-x: hidden;
 	position: absolute;
-	left: 50%;
+	right: 1%;
 	top: 50%;
-	transform: translate(-50%,-50%);
+	transform: translate(1%,-50%);
 	padding: 10px;
-	background-color:white;
+	padding-left: 60px;
+	background-color:#1c2833;
 	width: 60%;
-	height: 60%;
+	height: auto;
+	max-height: 100%;
 	z-index: 40000;
 	border-radius: 15px;
+	animation: animationPushContainer 0.3s ease-in-out;
+}
+@keyframes animationPushContainer {
+	to {
+		transform:translate(0px,-50%);
+		overflow: hidden;
+	}
+	from {
+		transform:translate(1000px,-50%);
+	}
 }
 .containerOfButton{
 	display: flex;
@@ -145,7 +162,50 @@ body{
 	color: white;
 	border-radius: 10px;
 }
-/* //////////////////////////////////////////////////////////////////// */
+/* ///////////////////////////////push container///////////////////////////////////// */
+#pushContainer{
+	background-color: #1c2833;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: flex-start;
+	overflow: hidden;
+	height: auto;
+}
+.push {
+	transition: 0.2s;
+	cursor: pointer;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: left;
+	color: white;
+	margin: 10px;
+	width: auto;
+	box-shadow: 0 0 5px rgb(0,0,0, 0.4);
+	max-width: 80%;
+	border: solid 3px transparent;
+}
+.push:hover{
+	border: solid 3px royalblue;
+	box-shadow: 0 0 15px transparent;
+
+}
+.push label {color: grey; 
+	cursor: pointer;
+}
+.push p {
+	scrollbar-width: thin;
+	max-width: 30%;
+  overflow:auto;
+	cursor: pointer;
+	background-color: #1c1c1c;
+    padding:10px;
+    border-radius: 10px;
+	margin: 10px;
+}
+/* //////////////////////////////////////////////////////// */
 nav{
 	z-index: 2000;
 	position: fixed;
@@ -230,9 +290,11 @@ text-align: left;
 	background:  #4646c1 ;
 }
 .contentFor{
+	position: relative;
 	padding: 50px;
 	background: #1c1c1c;
 	height: 100vh;
+	overflow-x: hidden;
 }
 .config{
 	z-index: 1000;
