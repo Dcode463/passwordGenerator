@@ -439,10 +439,12 @@ color: white;
 		max-width: 95%;
 	}
 	#closeContainerKey{
-		left: -5%;
+		right: 1%;
+		top: 5%;
+		float: right;
 	}
 #containerKeys {
-	width: 90%;
+	width: 100%;
 	padding-left: 5%;
 }
 .push {
