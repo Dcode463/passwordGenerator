@@ -428,6 +428,16 @@ color: white;
 
 }
 @media only screen and (max-width:686px){
+	#containerSave {
+		width: auto;
+	}
+	.containerInputsSave{
+		width: 100%;
+	}
+	.containerInputsSave input{
+		width: auto;
+		max-width: 95%;
+	}
 	#closeContainerKey{
 		left: -5%;
 	}
@@ -505,16 +515,16 @@ input{
 .contentGenratorValue{
 
 	z-index: 1000;
-	position: absolute;
-	border-radius: 15px;
-	padding: 30px;
-	color: white;
-	left: 50%;
-	height: 200px;
-	background:  transparent ;
-	  width: 100%;
-	  text-align: center;
-	  transform: translate(-50%,160%);
+    position: absolute;
+    border-radius: 15px;
+    padding: 30px;
+    color: white;
+    left: 50%;
+    height: 200px;
+    background: transparent;
+    width: 100%;
+    text-align: center;
+    transform: translate(-50%,120%);
 
 }
 .pAlert{
@@ -544,4 +554,9 @@ input{
 	padding: 50px;
 	height: 100vh;
 }
+}
+@media only screen and (max-width:306px){
+	#containerSave {
+		width: 100%;
+	}
 }
