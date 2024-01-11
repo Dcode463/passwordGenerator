@@ -17,6 +17,11 @@ body{
 	transform: translate(-50%,-50%);
 	background:transparent;
 }
+.commitPush{
+	background-color: royalblue!important;
+	color: white!important;
+	text-align: center;
+}
 #creator {
 	position: fixed;
 	left: 1%;
