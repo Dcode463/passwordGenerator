@@ -22,6 +22,7 @@ body{
 	left: 1%;
 	bottom: 1%;
 	color: grey;
+	user-select : none
 }
 /* ///////////////////// container key */
 #closeContainerKey{
