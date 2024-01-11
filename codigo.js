@@ -261,8 +261,8 @@ objectDocument.containerPushPassword.element.innerHTML = '';
 	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
 	let openDataBaseRequest = await openDataBase('memori')
    let resquestObjectKeys = await requestPasswords();
-if(resquestObjectKeys.length === 0) { objectDocument.noKeysContainerKey.open(); objectDocument.containerKeys.element.style.background = 'white'}
-else { objectDocument.noKeysContainerKey.close(); objectDocument.containerKeys.element.style.background = '#1c2833'
+if(resquestObjectKeys.length === 0) { objectDocument.noKeysContainerKey.open(); objectDocument.containerKeys.element.classList.replace('two','one')}
+else { objectDocument.noKeysContainerKey.close(); objectDocument.containerKeys.element.classList.replace('one','two')
 for(let i = 0; i < resquestObjectKeys.length; i++){
 	let fragmento = document.createDocumentFragment();
 	  let divContainer = document.createElement('div'); divContainer.classList.add ('push');
