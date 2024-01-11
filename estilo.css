@@ -205,7 +205,7 @@ body{
 	width: auto;
 	box-shadow: 0 0 5px rgb(0,0,0, 0.4);
 	max-width: 80%;
-	background-color: white;
+	/* background-color: white; */
 
 	border: solid 3px transparent;
 }
@@ -499,10 +499,10 @@ color: white;
 	display: block;
 	flex-direction: column;
 	align-items: flex-start;
-	background-color: white;
-
+	/* background-color: white; */
+    /* backdrop-filter:blur(130px); */
 }
-.push p {width: auto;max-width: 100%;}
+.push p {width: auto;max-width: 100%;background-color: white;color: black;margin: 20px;}
 	nav{
 	background:ghostwhite;
 	color:black;
