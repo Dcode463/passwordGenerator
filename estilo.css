@@ -444,6 +444,8 @@ color: white;
 		float: right;
 	}
 #containerKeys {
+	animation: none;
+
 	width: 100%;
 	padding-left: 5%;
 }
