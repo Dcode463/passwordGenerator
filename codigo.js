@@ -9,9 +9,10 @@ const contentGenradorItem = document.getElementById('itemPassword');
 const buttonCopiar = document.getElementById('buttonCopiar');
 const aplicadordecambios = document.getElementById('aplicarCambios');
 const buttonRegenerar = document.getElementById('regenerar')
+const containerButton = document.getElementById('prompButtons')
 const buttonOpenContainerKey = document.getElementById('buttonMenuKey');
 const resultado = document.getElementById('resultado')
-var mayusculas = false;
+var mayusculas = true;
 var minusculas = false;
 var numeros = false;
 var letrasEspeciales = false;
@@ -134,14 +135,14 @@ generator()
 }
 }
 
-
+validor()
 function generator(){
 	buttonCopiar.style.display = "block"; 
+	containerButton.style.opacity = '1'
 	 	resultado.textContent = "";
 	 	var txtExtraBucle = 0;
      for(i = 0; i < rango.value; i++){
  txtExtraBucle++
-      console.log(resultado.childElementCount);
 
   if (numeros === true){
  let pNew = document.createElement('B');
@@ -174,15 +175,10 @@ if (mayusculas === true) {
 
  }
   if (resultado.childElementCount > rango.value){
-       console.log("se ha pasado el limite de caracteres a peticion del usario");
        let repeticiondefor = resultado.childElementCount - rango.value;
-       console.log(`Los elementos exedidos son ${repeticiondefor}`);
-       console.log("borrando lo excesos de caracteres");
        for(i=0; i < repeticiondefor; i++){
         let elementosExedidos = resultado.firstElementChild;
       resultado.removeChild(elementosExedidos)
-        console.log("listo")
-        console.log(`ahora los elementos estan correctamente : ${resultado.childElementCount}`)
        }
       }
   

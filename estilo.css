@@ -17,6 +17,12 @@ body{
 	transform: translate(-50%,-50%);
 	background:transparent;
 }
+#creator {
+	position: absolute;
+	left: 1%;
+	bottom: 1%;
+	color: grey;
+}
 /* ///////////////////// container key */
 #closeContainerKey{
 	position: sticky;
