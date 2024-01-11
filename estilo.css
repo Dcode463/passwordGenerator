@@ -448,6 +448,7 @@ color: white;
 	padding-left: 5%;
 }
 .push {
+	padding: 5px;
 	border: solid 3px royalblue;
 	display: block;
 	flex-direction: column;
