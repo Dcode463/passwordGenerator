@@ -45,7 +45,7 @@ body{
 	max-height: 100%;
 	z-index: 40000;
 	border-radius: 15px;
-	animation: animationPushContainer 0.3s ease-in-out;
+	animation: animationPushContainer 0.2s ease-in-out;
 }
 @keyframes animationPushContainer {
 	to {
@@ -428,6 +428,20 @@ color: white;
 
 }
 @media only screen and (max-width:686px){
+	#closeContainerKey{
+		left: -5%;
+	}
+#containerKeys {
+	width: 90%;
+	padding-left: 5%;
+}
+.push {
+	display: block;
+	flex-direction: column;
+	align-items: flex-start;
+
+}
+.push p {width: auto;max-width: 100%;}
 	nav{
 	background:ghostwhite;
 	color:black;

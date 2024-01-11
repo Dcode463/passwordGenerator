@@ -216,6 +216,10 @@ noKeysContainerKey : {
 	open : () => objectDocument.noKeysContainerKey.element.style.display = 'flex',
 	close : () => objectDocument.noKeysContainerKey.element.style.display = 'none'
 }, 
+containerPushPassword : {
+ element : document.getElementById('pushContainer'),
+ add : child => objectDocument.containerPushPassword.element.appendChild(child)
+},
 /// buttons of saveKey
 buttonCancelSave : document.getElementById('saveCancel'),
 buttonSave : document.getElementById('saveConfirm')
@@ -256,13 +260,39 @@ const requestPasswords = () => new Promise ((resolve,reject) => {
 		 trasaction.onerror = (e) => reject(e)
 }
 })
+/*
+
+                                         	                 /*
+															 	<div class="push">
+			<label>Commit</label>
+				<p class="commitPush">Google</p>
+			<label>contraseña</label>
+					<p class="passwordPush">s</p>
+			<label>Fecha</label>
+					<p class="fechaPush">10/01/23</p>
+			</div>
+															 */ 
 const openContainerKey = async () => {
+objectDocument.containerPushPassword.element.innerHTML = '';
 	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
 	let openDataBaseRequest = await openDataBase('memori')
-   let resquestObjectKeys = await requestPasswords()
-
-if(resquestObjectKeys.value === 0)  objectDocument.noKeysContainerKey.open()
-else { objectDocument.noKeysContainerKey.close();
+   let resquestObjectKeys = await requestPasswords();
+if(resquestObjectKeys.length === 0)  objectDocument.noKeysContainerKey.open()
+else { objectDocument.noKeysContainerKey.close()
+for(let i = 0; i < resquestObjectKeys.length; i++){
+	let fragmento = document.createDocumentFragment();
+	  let divContainer = document.createElement('div'); divContainer.classList.add ('push');
+	  let label = document.createElement('label'); label.textContent = 'commit';
+	  let commit = document.createElement('p'); commit.classList.add ('commitPush'); commit.textContent = resquestObjectKeys[i].commit;
+	  let  labelPassword = document.createElement('label'); labelPassword.textContent = 'contraseña';
+	  let password = document.createElement ('p'); password.classList.add ('passwordPush'); password.textContent = resquestObjectKeys[i].password;
+	let labelFecha = document.createElement('label'); labelFecha.textContent = 'Fecha'; 
+	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  resquestObjectKeys[i].fecha
+divContainer.appendChild(label); divContainer.appendChild(commit); divContainer.appendChild(labelPassword); divContainer.appendChild(password); divContainer.appendChild(labelFecha)
+ divContainer.appendChild(fecha)
+ fragmento.appendChild(divContainer)
+objectDocument.containerPushPassword.add(fragmento)
+}
 }
 }
 const closeContainerKey = () => { objectDocument.sobrePonerBody.close(); objectDocument.containerKeys.close();
