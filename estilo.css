@@ -48,7 +48,7 @@ body{
 	padding-left: 60px;
 	background-color:#1c2833;
 	width:auto;
-	min-width: 50%;
+	min-width: 60%;
 	max-width: 100%;
 	height: auto;
 	min-height: 50%;
@@ -113,10 +113,13 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	/* flex-direction: column; */
 }
 #noneKeyGif{
-	width: 50%;
-}
+
+	width: 40%;
+
+ }
 /* /////////////////container save key//////////////////// */
 #containerSave { z-index: 50000;
 	position: absolute;
@@ -439,6 +442,23 @@ color: white;
 
 }
 @media only screen and (max-width:686px){
+	#noKeys {
+		flex-direction: column;
+	}
+	#alertNoKeys{
+		position: absolute;
+		left: 50%;
+		top: 100%;
+		transform: translate(-50%,-100%);
+		width: 90%;
+		text-align: center;
+	}
+	#noneKeyGif{
+
+		width: auto;
+		max-width: 70%;
+		max-height: 80%;
+	 }
 	#containerSave {
 		width: auto;
 	}
