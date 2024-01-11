@@ -260,25 +260,13 @@ const requestPasswords = () => new Promise ((resolve,reject) => {
 		 trasaction.onerror = (e) => reject(e)
 }
 })
-/*
-
-                                         	                 /*
-															 	<div class="push">
-			<label>Commit</label>
-				<p class="commitPush">Google</p>
-			<label>contraseña</label>
-					<p class="passwordPush">s</p>
-			<label>Fecha</label>
-					<p class="fechaPush">10/01/23</p>
-			</div>
-															 */ 
 const openContainerKey = async () => {
 objectDocument.containerPushPassword.element.innerHTML = '';
 	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
 	let openDataBaseRequest = await openDataBase('memori')
    let resquestObjectKeys = await requestPasswords();
-if(resquestObjectKeys.length === 0)  objectDocument.noKeysContainerKey.open()
-else { objectDocument.noKeysContainerKey.close()
+if(resquestObjectKeys.length === 0) { objectDocument.noKeysContainerKey.open(); objectDocument.containerKeys.element.style.background = 'white'}
+else { objectDocument.noKeysContainerKey.close(); objectDocument.containerKeys.element.style.background = '#1c2833'
 for(let i = 0; i < resquestObjectKeys.length; i++){
 	let fragmento = document.createDocumentFragment();
 	  let divContainer = document.createElement('div'); divContainer.classList.add ('push');
