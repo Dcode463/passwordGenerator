@@ -48,6 +48,7 @@ body{
 	padding-left: 60px;
 	background-color:#1c2833;
 	width:auto;
+	min-width: 50%;
 	max-width: 100%;
 	height: auto;
 	min-height: 50%;
