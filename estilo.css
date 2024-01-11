@@ -76,7 +76,7 @@ body{
 	width: auto;
 }
 .buttons {
-	user-select : none;
+	/* user-select : none; */
 	transition: 0.4s;
 	background: black;
 	color: white;
