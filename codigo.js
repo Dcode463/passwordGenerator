@@ -257,7 +257,6 @@ const requestPasswords = () => new Promise ((resolve,reject) => {
 }
 })
 const openContainerKey = async () => {
-objectDocument.containerPushPassword.element.innerHTML = '';
 	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
 	let openDataBaseRequest = await openDataBase('memori')
    let resquestObjectKeys = await requestPasswords();
@@ -279,9 +278,7 @@ objectDocument.containerPushPassword.add(fragmento)
 }
 }
 }
-const closeContainerKey = () => { objectDocument.sobrePonerBody.close(); objectDocument.containerKeys.close();
-    
-}
+const closeContainerKey = () => {objectDocument.containerPushPassword.element.innerHTML = '';objectDocument.sobrePonerBody.close(); objectDocument.containerKeys.close();}
 const saveFunction = () => { objectDocument.sobrePonerBody.open(); objectDocument.containerSaveKey.open();
    objectDocument.inputPasswordS.value = resultado.textContent;
 }
