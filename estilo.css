@@ -554,12 +554,12 @@ color: white;
 .push {
 	padding: 5px;
 	display: block;
-	flex-direction: column;
+	/* flex-direction: column; */
 	align-items: flex-start;
 	/* background-color: white; */
     /* backdrop-filter:blur(130px); */
 }
-.push p {width: auto;max-width: 100%;background-color: white;color: black;margin: 20px;}
+.push p {width: auto;max-width: 100%;background-color: white;color: black;margin: 20px;display: inline-block;}
 	nav{
 	background:ghostwhite;
 	color:black;
