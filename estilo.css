@@ -530,13 +530,12 @@ color: white;
 	#closeContainerKey{
 		z-index: 30000;
         position: sticky;
-        transform: translate(3%,-3%);
 		right: 3%;
 		background-color: royalblue;
 		border: none;
 		padding: 10px;
 		border-radius: 10px;
-		top: 1%;
+		top: 0;
 		cursor: pointer;
 	}
 .containerPush{
@@ -553,6 +552,7 @@ color: white;
 }
 .push {
 	padding: 5px;
+	max-width: 100%;
 	display: block;
 	/* flex-direction: column; */
 	align-items: flex-start;
