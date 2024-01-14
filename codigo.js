@@ -277,7 +277,7 @@ for(let i = 0; i < resquestObjectKeys.length; i++){
 	let labelFecha = document.createElement('label'); labelFecha.textContent = 'Fecha'; 
 	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  resquestObjectKeys[i].fecha;
 
-divContainer.onclick = () => openViewData({password : divContainer.firstElementChild.nextElementSibling.textContent})
+divContainer.onclick = () => openViewData({password : resquestObjectKeys[i].password})
 
 
 divContainer.appendChild(fecha)
