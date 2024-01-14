@@ -502,10 +502,16 @@ color: white;
 		max-width: 95%;
 	}
 	#closeContainerKey{
-		right: 1%;
-		top: 5%;
+		z-index: 30000;
+
+		position: absolute;
+		right: 3%;
+		background-color: royalblue;
+		border: none;
 		padding: 10px;
-		float: right;
+		border-radius: 10px;
+		top: 3%;
+		cursor: pointer;
 	}
 #containerKeys {
 	animation: none;
