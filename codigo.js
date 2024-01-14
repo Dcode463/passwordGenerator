@@ -134,7 +134,6 @@ contentValue.style.opacity = "0.2";
 generator()
 }
 }
-
 validor()
 function generator(){
 	buttonCopiar.style.display = "block"; 
@@ -216,6 +215,12 @@ containerPushPassword : {
  element : document.getElementById('pushContainer'),
  add : child => objectDocument.containerPushPassword.element.appendChild(child)
 },
+containerView : {
+	element : document.getElementById('containerView'),
+	open : () => objectDocument.containerView.element.style.display = 'flex',
+	close : () => objectDocument.containerView.element.style.display = 'none'
+},
+passwordView : document.getElementById('passwordView'),
 /// buttons of saveKey
 buttonCancelSave : document.getElementById('saveCancel'),
 buttonSave : document.getElementById('saveConfirm')
@@ -270,10 +275,14 @@ for(let i = 0; i < resquestObjectKeys.length; i++){
 	  let  labelPassword = document.createElement('label'); labelPassword.textContent = 'contraseña';
 	  let password = document.createElement ('p'); password.classList.add ('passwordPush'); password.textContent = resquestObjectKeys[i].password;
 	let labelFecha = document.createElement('label'); labelFecha.textContent = 'Fecha'; 
-	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  resquestObjectKeys[i].fecha
-	divContainer.appendChild(fecha)
- divContainer.appendChild(commit); 
- fragmento.appendChild(divContainer)
+	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  resquestObjectKeys[i].fecha;
+
+divContainer.onclick = () => openViewData({password : divContainer.firstElementChild.nextElementSibling.textContent})
+
+
+divContainer.appendChild(fecha)
+divContainer.appendChild(commit); 
+fragmento.appendChild(divContainer)
 objectDocument.containerPushPassword.add(fragmento)
 }
 }
@@ -295,6 +304,13 @@ if(pushData) {objectDocument.buttonSave.innerHTML  = 'Contraseña guardada <i cl
 	objectDocument.buttonSave.innerHTML = 'Guardar';
    objectDocument.sobrePonerBody.close(); objectDocument.containerSaveKey.close();
 },1000)}
+}
+let matrizID;
+const openViewData = (data) => {
+	objectDocument.containerKeys.close();
+  objectDocument.containerView.open();
+  objectDocument.passwordView.textContent = data.password;
+  matrizID = data.id
 }
 //////////////////////////////////////////////////// Events
 
