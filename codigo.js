@@ -272,8 +272,8 @@ for(let i = 0; i < resquestObjectKeys.length; i++){
 	  let password = document.createElement ('p'); password.classList.add ('passwordPush'); password.textContent = resquestObjectKeys[i].password;
 	let labelFecha = document.createElement('label'); labelFecha.textContent = 'Fecha'; 
 	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  resquestObjectKeys[i].fecha
+	divContainer.appendChild(fecha)
  divContainer.appendChild(commit); 
- divContainer.appendChild(fecha)
  fragmento.appendChild(divContainer)
 objectDocument.containerPushPassword.add(fragmento)
 }
