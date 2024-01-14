@@ -501,6 +501,9 @@ color: white;
 
 }
 @media only screen and (max-width:686px){
+#containerView{
+	width: 100%;
+}
 .two {
 	background-color: transparent!important;
 }
