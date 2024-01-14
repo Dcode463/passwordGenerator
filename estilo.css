@@ -70,10 +70,10 @@ body{
 	z-index: 41000;
 }
 .one {
-	background-color: white;
+	background-color: white!important;
 }
 .two {
-	background-color: #1c2833;
+	background-color: white!important;
 }
 #containerView {
 	position: absolute;
@@ -546,6 +546,7 @@ color: white;
 	scrollbar-width: thin;
 }
 #containerKeys {
+	background-color: white!important;
 	animation: none;
     height: 100%;
 	width: 100%;
@@ -561,7 +562,7 @@ color: white;
 	/* background-color: white; */
     /* backdrop-filter:blur(130px); */
 }
-.push p {width: auto;max-width: 100%;background-color: transparent;color: rgb(255, 255, 255);margin: 20px;display: inline-block;}
+.push p {width: auto;max-width: 100%;background-color: transparent;color: rgb(0, 0, 0);margin: 20px;display: inline-block;}
 	nav{
 	background:ghostwhite;
 	color:black;

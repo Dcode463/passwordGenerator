@@ -291,7 +291,7 @@ const closeSaveFunction = () => { objectDocument.sobrePonerBody.close(); objectD
 const saveKeyFunction = async () => {
 objectDocument.buttonSave.innerHTML  = 'Guardando <i class="fa-solid fa-database fa-fade"></i>'
 let date = new Date();
-let fecha = date.getFullYear() + "-"  + date.getMonth() + 1 + "-" + (date.getDate() < 10 ? "0" : "") + date.getDate()
+let fecha =  date.getDate() + "-"  + date.getMonth() + 1 + "-" + (date.getDate() < 10 ? "0" : "") + date.getFullYear()
 let validorDataBase = await openDataBase('memori');
 let pushData = await pushDataBase(objectDocument.inputPasswordS.value,objectDocument.inputCommitS.value,fecha)
 if(pushData) {objectDocument.buttonSave.innerHTML  = 'Contraseña guardada <i class="fa-solid fa-check"></i>'; setTimeout(()=> {
@@ -313,6 +313,6 @@ objectDocument.buttonSaveKey.onclick = () => saveFunction ()
 
 objectDocument.buttonCancelSave.onclick = () => closeSaveFunction ()
 
-objectDocument.inputPasswordS.onchange = () => resultado.textContent = objectDocument.inputPasswordS.value
+objectDocument.inputPasswordS.onchange = () => resultado.textContent = objectDocument.inputPasswordS.value;
 
 objectDocument.buttonSave.onclick = () => saveKeyFunction()
