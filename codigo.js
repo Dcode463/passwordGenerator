@@ -5,7 +5,8 @@ const chexboxMinusculas = document.getElementById('checkboxMinusculas')
 const chexboxNumeros = document.getElementById('checkboxNumeros')
 const chexboxLestrasExtras = document.getElementById('checkboxMiTxt')
 const chexboxletrasEspeciales = document.getElementById('checkboxLestrasEspeciales');
-const contentGenradorItem = document.getElementById('itemPassword');
+let contentGenradorItem = document.getElementById('itemPassword');
+let contentGenradorItemTwo = document.getElementById('itemPassword')
 const buttonCopiar = document.getElementById('buttonCopiar');
 const aplicadordecambios = document.getElementById('aplicarCambios');
 const buttonRegenerar = document.getElementById('regenerar')
@@ -67,11 +68,10 @@ chexboxNumeros.addEventListener('change', function(){
 	}
 })
 
-
-
-buttonCopiar.addEventListener('click', () => {
+const copiar = (element) => 
+	{ 
 	  const copiar = document.createRange();
-	  copiar.selectNode(contentGenradorItem)
+	  copiar.selectNode(element)
 	  window.getSelection().removeAllRanges();
 	  window.getSelection().addRange(copiar);
 	  try { 
@@ -86,7 +86,10 @@ buttonCopiar.addEventListener('click', () => {
 	  	console.error('error al copiar el contenido : ', err);
 	  }
 	  window.getSelection().removeAllRanges();
-})
+}
+
+
+buttonCopiar.addEventListener('click', () => copiar(document.getElementById('itemPassword')))
 
 function numberAleatorio(){
 	let num = [1,2,3,4,5,6,7,8,9,0];
@@ -222,6 +225,7 @@ containerView : {
 },
 passwordView : document.getElementById('passwordView'),
 exitContainerView : document.getElementById('exitContainerView'),
+copiarView : document.getElementById('copiarView'),
 /// buttons of saveKey
 buttonCancelSave : document.getElementById('saveCancel'),
 buttonSave : document.getElementById('saveConfirm')
@@ -337,3 +341,5 @@ objectDocument.inputPasswordS.onchange = () => resultado.textContent = objectDoc
 objectDocument.buttonSave.onclick = () => saveKeyFunction()
 
 objectDocument.exitContainerView.onclick = () => closeViewData();
+
+objectDocument.copiarView.onclick = () => {contentGenradorItemTwo = objectDocument.passwordView; copiar(document.getElementById('passwordView'))}
