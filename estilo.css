@@ -541,7 +541,7 @@ color: white;
 		cursor: pointer;
 	}
 .containerPush{
-	height: 90%;
+	height: 80%;
 	overflow: auto;
 	scrollbar-width: thin;
 }
