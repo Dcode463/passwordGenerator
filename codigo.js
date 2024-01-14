@@ -221,6 +221,7 @@ containerView : {
 	close : () => objectDocument.containerView.element.style.display = 'none'
 },
 passwordView : document.getElementById('passwordView'),
+exitContainerView : document.getElementById('exitContainerView'),
 /// buttons of saveKey
 buttonCancelSave : document.getElementById('saveCancel'),
 buttonSave : document.getElementById('saveConfirm')
@@ -312,6 +313,11 @@ const openViewData = (data) => {
   objectDocument.passwordView.textContent = data.password;
   matrizID = data.id
 }
+const closeViewData = () => 
+{
+	objectDocument.containerKeys.open();
+	objectDocument.containerView.close();
+}
 //////////////////////////////////////////////////// Events
 
 buttonRegenerar.onclick = () => {buttonRegenerar.innerHTML = `Regenerar <i class="fa-solid fa-rotate fa-spin"></i>`; validor(); setTimeout(()=> {buttonRegenerar.innerHTML = `Regenerar <i class="fa-solid fa-rotate"></i></i>`},100)}
@@ -329,3 +335,5 @@ objectDocument.buttonCancelSave.onclick = () => closeSaveFunction ()
 objectDocument.inputPasswordS.onchange = () => resultado.textContent = objectDocument.inputPasswordS.value;
 
 objectDocument.buttonSave.onclick = () => saveKeyFunction()
+
+objectDocument.exitContainerView.onclick = () => closeViewData();
