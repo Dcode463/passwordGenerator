@@ -4,6 +4,32 @@
 }
 body{
 	background:   #1c2833 ;
+}#navOfSearchKey{
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+	background-color:transparent;
+	position: sticky;
+	top: 0;
+}
+#searchInput {
+	width: auto;
+	background-color: white;
+	border-radius: 10px;
+	border: none;
+    padding: 6px;
+}
+#searchKey{
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+.containerInputSearch{
+	background-color: white;
+	padding: 10px;
+	border-radius: 10px;
 }
 #sobrePoner {
 	z-index: 40000;
@@ -209,8 +235,8 @@ body{
 	justify-content: center;
 	flex-direction: column;
 	align-items: flex-start;
-	overflow: hidden;
-	height: auto;
+height: auto;
+overflow: hidden;
 }
 .push {
 	transition: 0.2s;
@@ -503,16 +529,21 @@ color: white;
 	}
 	#closeContainerKey{
 		z-index: 30000;
-
-		position: absolute;
+        position: sticky;
+        transform: translate(3%,-3%);
 		right: 3%;
 		background-color: royalblue;
 		border: none;
 		padding: 10px;
 		border-radius: 10px;
-		top: 3%;
+		top: 1%;
 		cursor: pointer;
 	}
+.containerPush{
+	height: 90%;
+	overflow: auto;
+	scrollbar-width: thin;
+}
 #containerKeys {
 	animation: none;
     height: 100%;
