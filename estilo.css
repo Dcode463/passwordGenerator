@@ -4,6 +4,8 @@
 }
 body{
 	background:   #1c2833 ;
+	height: 100vh;
+	max-height: 100vh;
 }#navOfSearchKey{
 	width: auto;
 	display: flex;
