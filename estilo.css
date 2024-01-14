@@ -47,14 +47,29 @@ body{
 .two {
 	background-color: #1c2833;
 }
+#containerView {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: auto;
+	height: auto;
+	z-index: 40000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color:transparent;
+}
+.prompts{margin-top: 2%;}
+#passwordView{color: white;font-size: 25px; margin-bottom: 1%;}
 #containerKeys{
-	scroll-behavior: smooth;
 	overflow: auto;
 	overflow-x: hidden;
 	position: absolute;
-	right: 1%;
+	left: 50%;
 	top: 50%;
-	transform: translate(1%,-50%);
+	transform: translate(-50%,-50%);
 	padding: 10px;
 	padding-left: 60px;
 	background-color:#1c2833;
@@ -66,7 +81,7 @@ body{
 	max-height: 100%;
 	z-index: 40000;
 	border-radius: 15px;
-	animation: animationPushContainer 0.2s ease-in-out;
+	/* animation: animationPushContainer 0.2s ease-in-out; */
 }
 @keyframes animationPushContainer {
 	to {
@@ -224,7 +239,7 @@ body{
 }
 .push p {
 	scrollbar-width: thin;
-	max-width: 30%;
+	max-width: 100%;
   overflow:auto;
 	cursor: pointer;
 	background-color: #1c1c1c;
