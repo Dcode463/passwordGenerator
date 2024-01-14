@@ -17,8 +17,9 @@ body{
 	top: 0;
 }
 #searchInput {
+	color: white;
 	width: auto;
-	background-color: white;
+	background-color: transparent;
 	border-radius: 10px;
 	border: none;
     padding: 6px;
@@ -27,11 +28,13 @@ body{
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
+	color: white;
 }
 .containerInputSearch{
-	background-color: white;
+	background-color: transparent;
 	padding: 10px;
 	border-radius: 10px;
+	border: solid 2px white;
 }
 #sobrePoner {
 	z-index: 40000;
