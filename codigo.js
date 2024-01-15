@@ -460,5 +460,3 @@ objectDocument.searchInput.onkeyup = () => searchKey();
 
 objectDocument.searchKeyButon.onclick = () => searchKey();
 
-if('indexedDB' in window) alert('Tu dispositivo si es compatible con indexedDB')
-else alert ('Tu dispositivo no es compatible con indexedDB')
