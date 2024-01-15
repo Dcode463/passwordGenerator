@@ -223,6 +223,22 @@ containerView : {
 	open : () => objectDocument.containerView.element.style.display = 'flex',
 	close : () => objectDocument.containerView.element.style.display = 'none'
 },
+alertCommit : {
+	element : document.getElementById('alertCommit'),
+	open : () => objectDocument.alertCommit.element.style.display = 'flex',
+	close : () => objectDocument.alertCommit.element.style.display = 'none'
+},
+textContainer : document.getElementById('commentALERT'),
+objectFunctionCommitAlert :  (funcion,alerta) => {
+  if(funcion) {
+objectDocument.inputCommitS.focus()
+objectDocument.errorSound.play()
+	objectDocument.alertCommit.element.style.opacity = '1'
+objectDocument.alertCommit.open(); setTimeout(()=> {objectDocument.alertCommit.element.style.opacity = '0'},2500);
+objectDocument.textContainer.textContent = alerta
+}
+},
+errorSound : document.getElementById('errorSound'),
 passwordView : document.getElementById('passwordView'),
 exitContainerView : document.getElementById('exitContainerView'),
 copiarView : document.getElementById('copiarView'),
@@ -266,6 +282,10 @@ const requestPasswords = () => new Promise ((resolve,reject) => {
 		 trasaction.onerror = (e) => reject(e)
 }
 })
+const whatMyKeyid = nameKey => 
+{
+return console.log('sss')
+}
 const openContainerKey = async () => {
 	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
 	let openDataBaseRequest = await openDataBase('memori')
@@ -274,18 +294,13 @@ if(resquestObjectKeys.length === 0) { objectDocument.noKeysContainerKey.open(); 
 else { objectDocument.noKeysContainerKey.close(); objectDocument.containerKeys.element.classList.replace('one','two')
 for(let i = 0; i < resquestObjectKeys.length; i++){
 	let fragmento = document.createDocumentFragment();
-	  let divContainer = document.createElement('div'); divContainer.classList.add ('push');
-	  let label = document.createElement('label'); label.textContent = 'commit';
-	  let commit = document.createElement('p'); commit.classList.add ('commitPush'); commit.textContent = resquestObjectKeys[i].commit;
-	  let  labelPassword = document.createElement('label'); labelPassword.textContent = 'contraseña';
-	  let password = document.createElement ('p'); password.classList.add ('passwordPush'); password.textContent = resquestObjectKeys[i].password;
-	let labelFecha = document.createElement('label'); labelFecha.textContent = 'Fecha'; 
+    let divContainer = document.createElement('div'); divContainer.classList.add ('push');
+	let commit = document.createElement('p'); commit.classList.add ('commitPush'); commit.textContent = resquestObjectKeys[i].commit;
 	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  resquestObjectKeys[i].fecha;
-
+let whatKey = await whatMyKeyid(resquestObjectKeys[i].commit)
 divContainer.onclick = () => openViewData({password : resquestObjectKeys[i].password})
 
-
-divContainer.appendChild(fecha)
+// divContainer.appendChild(fecha)
 divContainer.appendChild(commit); 
 fragmento.appendChild(divContainer)
 objectDocument.containerPushPassword.add(fragmento)
@@ -299,16 +314,29 @@ const saveFunction = () => { objectDocument.sobrePonerBody.open(); objectDocumen
 const closeSaveFunction = () => { objectDocument.sobrePonerBody.close(); objectDocument.containerSaveKey.close()
 	objectDocument.inputPasswordS.value = ''
 }
+const validorIdCommit  = async name => {
+let password = await requestPasswords()
+let validor  = password.some(e => e.commit === name)
+if(validor) return false
+else if (validor === false) return true
+}
 const saveKeyFunction = async () => {
-objectDocument.buttonSave.innerHTML  = 'Guardando <i class="fa-solid fa-database fa-fade"></i>'
-let date = new Date();
-let fecha =  date.getDate() + "-"  + date.getMonth() + 1 + "-" + (date.getDate() < 10 ? "0" : "") + date.getFullYear()
-let validorDataBase = await openDataBase('memori');
-let pushData = await pushDataBase(objectDocument.inputPasswordS.value,objectDocument.inputCommitS.value,fecha)
-if(pushData) {objectDocument.buttonSave.innerHTML  = 'Contraseña guardada <i class="fa-solid fa-check"></i>'; setTimeout(()=> {
-	objectDocument.buttonSave.innerHTML = 'Guardar';
-   objectDocument.sobrePonerBody.close(); objectDocument.containerSaveKey.close();
-},1000)}
+objectDocument.inputCommitS.focus()
+
+let validorCommitId = await validorIdCommit(objectDocument.inputCommitS.value)
+	if(objectDocument.inputCommitS.value.length != 0 && objectDocument.inputCommitS.value != ' '  && validorCommitId)
+		{
+			objectDocument.buttonSave.innerHTML  = 'Guardando <i class="fa-solid fa-database fa-fade"></i>'
+			let date = new Date();
+			let fecha =  date.getDate() + "-"  + date.getMonth() + 1 + "-" + (date.getDate() < 10 ? "0" : "") + date.getFullYear()
+			let validorDataBase = await openDataBase('memori');
+			let pushData = await pushDataBase(objectDocument.inputPasswordS.value,objectDocument.inputCommitS.value,fecha)
+			if(pushData) {objectDocument.buttonSave.innerHTML  = 'Contraseña guardada <i class="fa-solid fa-check"></i>'; setTimeout(()=> {
+				objectDocument.buttonSave.innerHTML = 'Guardar';
+			   objectDocument.sobrePonerBody.close(); objectDocument.containerSaveKey.close();
+			},1000)}
+			}else if (validorCommitId) objectDocument.objectFunctionCommitAlert(true, 'Ingrese Un comentario para registralo')
+			else objectDocument.objectFunctionCommitAlert(true, 'Hmm, Ya tienes registrado ese comentario')
 }
 let matrizID;
 const openViewData = (data) => {

@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="normalize.css">
 	<link rel="icon" href="media/icono.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<audio id="errorSound" src="media/Cancelar invitacion.mp3" style="display: none;"></audio>
 	<title>D/Passwords</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
 		   	     
 	  <div class="contentFor" id="contentGenrator" >
 	<p id="creator">Dcode</p>
-		<div id="sobrePoner" style="display: none;"></div>
+		<div id="sobrePoner" style="display: block;"></div>
 	<button id="buttonMenuKey"><img src="media/icons/passwordKey.png" alt=""></button>
 
 	  	<div class="config" id="configID">  
@@ -70,10 +71,14 @@
 </div>
 </div>
 	<!-- /////////////////////////////  container save key -->
-	<div id="containerSave" style="display: none;">
+	<div id="alertCommit" style="display: none;">
+	<div style="text-align: center;" id="commentALERT">	Ups, ese Comentario ya Existe</div> <i style="margin: 5px; " class="fa-solid fa-circle-exclamation"></i>
+	</div>
+	<div id="containerSave" style="display: block;">
+		
 <div class="containerInputsSave">
    <input  type="text" placeholder="Password" id="PasswordOfSave">
-   <input  type="text" placeholder="Commit" id="commitOfSave">
+   <input  type="text" placeholder="Comentario" id="commitOfSave">
 </div>
 <button id="saveConfirm" class="buttonsOfPromtsSave">Guardar</button>
 <button id="saveCancel"  class="buttonsOfPromtsSave">Cancelar</button>
