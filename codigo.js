@@ -380,7 +380,7 @@ dataBase.onsuccess = () => {
 	let trasaction = dt.transaction('memori', 'readwrite');
 	let object = trasaction.objectStore('memori');
 	object.delete(matrizID)
-	trasaction.oncomplete = () => {closeViewData(); content.style.transform = 'translate(-110%,-10%)'; setTimeout(()=> objectDocument.containerPushPassword.element.removeChild(content), 1000);}
+	trasaction.oncomplete = () => {closeViewData();  objectDocument.containerPushPassword.element.removeChild(content)}
 }
 }
 //////////////////////////////////////////////////// Events
