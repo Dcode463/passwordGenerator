@@ -149,8 +149,8 @@ body{
 #passwordView{color: white;font-size: 25px; margin-bottom: 18%; border-left: solid 4px royalblue; padding-left: 15px; text-align: left;max-width: 90%;overflow: auto;scrollbar-width: thin;min-width: 30%;min-height: 20%;}
 #containerKeys{
 
-	overflow: auto;
 	overflow-x: hidden;
+	
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -162,7 +162,8 @@ body{
 	min-width: 60%;
 	max-width: 100%;
 	height: auto;
-	min-height: 50%;
+	height: 70%;
+	width: 60%;
 	max-height: 70%;
 	z-index: 40000;
 	border-radius: 15px;

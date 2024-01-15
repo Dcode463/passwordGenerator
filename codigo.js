@@ -242,6 +242,8 @@ passwordView : document.getElementById('passwordView'),
 exitContainerView : document.getElementById('exitContainerView'),
 copiarView : document.getElementById('copiarView'),
 borrarView : document.getElementById('borrarView'),
+searchInput : document.getElementById('searchInput'),
+searchKeyButon : document.getElementById('searchKey'),
 /// buttons of saveKey
 buttonCancelSave : document.getElementById('saveCancel'),
 buttonSave : document.getElementById('saveConfirm')
@@ -308,19 +310,24 @@ const whatMyKeyid = async nameKey => new Promise ( async (resolve, reject)=> {
 	})
 
 
-const openContainerKey = async () => {
+const openContainerKey = async (funcion) => {
 	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
-	let openDataBaseRequest = await openDataBase('memori')
+	let openDataBaseRequest = await openDataBase('memori');
    let resquestObjectKeys = await requestPasswords();
+   let matrizOne;
+if(funcion) matrizOne = resquestObjectKeys 
+else if (funcion === false) matrizOne = resquestObjectKeys.filter(e => e.commit.includes(objectDocument.searchInput.value))
+if(matrizOne.length === 0) matrizOne = resquestObjectKeys.filter(e => e.password.includes(objectDocument.searchInput.value))
+console.log(matrizOne)
 if(resquestObjectKeys.length === 0) { objectDocument.noKeysContainerKey.open(); objectDocument.containerKeys.element.classList.replace('two','one')}
 else { objectDocument.noKeysContainerKey.close(); objectDocument.containerKeys.element.classList.replace('one','two')
-for(let i = 0; i < resquestObjectKeys.length; i++){
+for(let i = 0; i < matrizOne.length; i++){
 	let fragmento = document.createDocumentFragment();
     let divContainer = document.createElement('div'); divContainer.classList.add ('push');
-	let commit = document.createElement('p'); commit.classList.add ('commitPush'); commit.textContent = resquestObjectKeys[i].commit;
-	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  resquestObjectKeys[i].fecha;
-let whatKey = await whatMyKeyid(resquestObjectKeys[i].commit)
-divContainer.onclick = () => openViewData({password : resquestObjectKeys[i].password,id : whatKey, content : divContainer})
+	let commit = document.createElement('p'); commit.classList.add ('commitPush'); commit.textContent = matrizOne[i].commit;
+	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  matrizOne[i].fecha;
+let whatKey = await whatMyKeyid(matrizOne[i].commit)
+divContainer.onclick = () => openViewData({password : matrizOne[i].password,id : whatKey, content : divContainer})
 
 // divContainer.appendChild(fecha)
 divContainer.appendChild(commit); 
@@ -329,7 +336,7 @@ objectDocument.containerPushPassword.add(fragmento)
 }
 }
 }
-const closeContainerKey = () => {objectDocument.containerPushPassword.element.innerHTML = '';objectDocument.sobrePonerBody.close(); objectDocument.containerKeys.close();}
+const closeContainerKey = () => { objectDocument.searchInput.value = '';objectDocument.containerPushPassword.element.innerHTML = '';objectDocument.sobrePonerBody.close(); objectDocument.containerKeys.close();}
 const saveFunction = () => { objectDocument.sobrePonerBody.open(); objectDocument.containerSaveKey.open();
    objectDocument.inputPasswordS.value = resultado.textContent;
 }
@@ -383,13 +390,17 @@ dataBase.onsuccess = () => {
 	trasaction.oncomplete = () => {closeViewData();  objectDocument.containerPushPassword.element.removeChild(content)}
 }
 }
+const searchKey = () => {
+	objectDocument.containerPushPassword.element.innerHTML = '';
+	openContainerKey(false)
+}
 //////////////////////////////////////////////////// Events
 
 buttonRegenerar.onclick = () => {buttonRegenerar.innerHTML = `Regenerar <i class="fa-solid fa-rotate fa-spin"></i>`; validor(); setTimeout(()=> {buttonRegenerar.innerHTML = `Regenerar <i class="fa-solid fa-rotate"></i></i>`},100)}
 
 aplicadordecambios.onclick = () => validor()
 
-buttonOpenContainerKey.onclick = () => openContainerKey()
+buttonOpenContainerKey.onclick = () => openContainerKey(true)
 
 objectDocument.buttoncloseContainerKey.onclick = () => closeContainerKey ()
 
@@ -405,4 +416,8 @@ objectDocument.exitContainerView.onclick = () => closeViewData();
 
 objectDocument.copiarView.onclick = () => {contentGenradorItemTwo = objectDocument.passwordView; copiar(document.getElementById('passwordView'))}
 
-objectDocument.borrarView.onclick = () => deleteKeys()
+objectDocument.borrarView.onclick = () => deleteKeys();
+
+objectDocument.searchInput.onkeyup = () => searchKey();
+
+objectDocument.searchKeyButon.onclick = () => searchKey();
