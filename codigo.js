@@ -21,46 +21,6 @@ var numeros = false;
 var letrasEspeciales = false;
 
 
-function actulizaraRango(){
-	  let valorRango = rango.value;
-	    rangeP.textContent = valorRango;
-	if(valorRango <= 4 ) {
-  rangeSegurity.style.width = '5%';
-  rangeSegurity.style.background = 'red';
-  commentSegurity.innerHTML = ' <i class="iconsegurity fa-regular fa-face-dizzy"></i> Hasta mi abuela te hakea'
-
-	}
-	else if (valorRango  >= 6 && valorRango < 10)
-		{
-			rangeSegurity.style.width = '25%';
-			rangeSegurity.style.background = 'rgb(255, 140, 0)';
-			commentSegurity.innerHTML = '<i class=" iconsegurity fa-regular fa-face-flushed"></i> Seguridad Media'
-			  }
-		else if (valorRango >= 12 && valorRango <= 15){
-			rangeSegurity.style.width = '35%';
-			rangeSegurity.style.background = 'rgb(255, 213, 0)';
-			commentSegurity.innerHTML = '<i class=" iconsegurity fa-regular fa-face-grin"></i> Seguridad Alta' 
-
-		}
-		else if(valorRango >= 18 && valorRango <= 25) {
-			rangeSegurity.style.width = '45%';
-			rangeSegurity.style.background = 'rgb(221, 255, 0)';
-			commentSegurity.innerHTML = '<i class=" iconsegurity fa-regular fa-face-grin-beam"></i> Seguridad Super Alta'
-		}
-		else if(valorRango >= 30 && valorRango <= 45) { 
-			rangeSegurity.style.width = '75%';
-			rangeSegurity.style.background = 'rgb(132, 255, 0)';
-			commentSegurity.innerHTML = '<i class="iconsegurity fa-solid fa-ghost"></i> Modo Ghost'
-
-		}
-		else if(valorRango >= 50){
-			rangeSegurity.style.width = '100%';
-			rangeSegurity.style.background = 'rgb(0, 255, 81)';
-			commentSegurity.innerHTML = ' <i class="iconsegurity fa-solid fa-user-secret"></i> Modo Anonimus'
-
-		}
-	    return valorRango;
-}
 
 rango.addEventListener('input', actulizaraRango);
 
@@ -159,7 +119,7 @@ function letraAleatoriasEspeciales(){
     return signosAleatorios;
 }
 
-const validor = () => {
+function validor(){
 	buttonCopiar.style.display = "none";
 if (mayusculas === false && minusculas === false && numeros === false && letrasEspeciales === false  ) {
 pAlert.textContent = "Selecione los terminos que desea en la configuracion";
@@ -175,6 +135,48 @@ generator()
 }
 }
 validor()
+function actulizaraRango(){
+	let valorRango = rango.value;
+	  rangeP.textContent = valorRango;
+  if(valorRango <= 4 ) {
+rangeSegurity.style.width = '5%';
+rangeSegurity.style.background = 'red';
+commentSegurity.innerHTML = ' <i class="iconsegurity fa-regular fa-face-dizzy"></i> Hasta mi abuela te hakea'
+
+  }
+  else if (valorRango  >= 6 && valorRango < 10)
+	  {
+		  rangeSegurity.style.width = '25%';
+		  rangeSegurity.style.background = 'rgb(255, 140, 0)';
+		  commentSegurity.innerHTML = '<i class=" iconsegurity fa-regular fa-face-flushed"></i> Seguridad Media'
+			}
+	  else if (valorRango >= 12 && valorRango <= 15){
+		  rangeSegurity.style.width = '35%';
+		  rangeSegurity.style.background = 'rgb(255, 213, 0)';
+		  commentSegurity.innerHTML = '<i class=" iconsegurity fa-regular fa-face-grin"></i> Seguridad Alta' 
+
+	  }
+	  else if(valorRango >= 18 && valorRango <= 25) {
+		  rangeSegurity.style.width = '45%';
+		  rangeSegurity.style.background = 'rgb(221, 255, 0)';
+		  commentSegurity.innerHTML = '<i class=" iconsegurity fa-regular fa-face-grin-beam"></i> Seguridad Super Alta'
+	  }
+	  else if(valorRango >= 30 && valorRango <= 45) { 
+		  rangeSegurity.style.width = '75%';
+		  rangeSegurity.style.background = 'rgb(132, 255, 0)';
+		  commentSegurity.innerHTML = '<i class="iconsegurity fa-solid fa-ghost"></i> Modo Ghost'
+
+	  }
+	  else if(valorRango >= 50){
+		  rangeSegurity.style.width = '100%';
+		  rangeSegurity.style.background = 'rgb(0, 255, 81)';
+		  commentSegurity.innerHTML = ' <i class="iconsegurity fa-solid fa-user-secret"></i> Modo Anonimus'
+
+	  }
+	  validor()
+	  return valorRango;
+}
+
 function generator(){
 	buttonCopiar.style.display = "block"; 
 	containerButton.style.opacity = '1'
@@ -407,7 +409,7 @@ let content;
 const openViewData = (data) => {
 	objectDocument.containerKeys.close();
   objectDocument.containerView.open();
-  objectDocument.passwordView.textContent = data.password;
+  objectDocument.passwordView.value = data.password;
   matrizID = data.id;
   content = data.content;
 }

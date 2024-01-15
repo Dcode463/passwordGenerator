@@ -5,7 +5,15 @@
 body{
 	height: 100vh;
 	max-height: 100vh;
-}#navOfSearchKey{
+	min-width: 228px;
+}
+.pageInfo{
+	position: absolute;
+	right: 1%;
+	bottom: 1%;
+	color: white;
+}
+#navOfSearchKey{
 	width: auto;
 	display: flex;
 	justify-content: center;
@@ -90,6 +98,7 @@ body{
 	border-radius: 10px;
 	border: none;
     padding: 6px;
+	border: solid 4px white;
 }
 #searchKey{
 	border: none;
@@ -101,7 +110,6 @@ body{
 	background-color: transparent;
 	padding: 10px;
 	border-radius: 10px;
-	border: solid 2px white;
 }
 #sobrePoner {
 	z-index: 40000;
@@ -123,8 +131,8 @@ body{
 #creator {
 	position: fixed;
 	left: 1%;
-	bottom: 1%;
-	color: grey;
+	top: 1%;
+	color: rgb(255, 255, 255);
 	user-select : none
 }
 /* ///////////////////// container key */
@@ -163,7 +171,24 @@ body{
 	background-color:transparent;
 }
 .prompts{margin-top: 2%;}
-#passwordView{color: white;font-size: 25px; margin-bottom: 18%; border-left: solid 4px royalblue; padding-left: 15px; text-align: left;max-width: 90%;overflow: auto;scrollbar-width: thin;min-width: 30%;min-height: 20%;}
+#passwordView{
+	color: white;
+	font-size: 25px;
+	 margin-bottom: 18px;
+	  background-color: transparent;
+	   border-left: solid 4px royalblue; 
+	   padding-left: 15px; 
+	   text-align: left;
+	   max-width: 90%;
+	   overflow: auto;
+	   scrollbar-width: thin;
+	   min-width: 30%;
+	   min-height: 20%;
+	   max-width:80%;
+	  border-top: none;
+	  border-right: none;
+	  border-bottom: none;
+	}
 #containerKeys{
 
 	overflow-x: hidden;
@@ -576,6 +601,7 @@ color: white;
 
 }
 @media only screen and (max-width:686px){
+
 	.iconsegurity{color: white;}
 #containerView{
 	width: 100%;
