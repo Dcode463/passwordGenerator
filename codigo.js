@@ -320,7 +320,6 @@ if(validor) return false
 else if (validor === false) return true
 }
 const saveKeyFunction = async () => {
-objectDocument.inputCommitS.focus()
 
 let validorCommitId = await validorIdCommit(objectDocument.inputCommitS.value)
 	if(objectDocument.inputCommitS.value.length != 0 && objectDocument.inputCommitS.value != ' '  && validorCommitId)
