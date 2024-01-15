@@ -175,7 +175,6 @@ body{
 	color: white;
 	font-size: 25px;
 	 margin-bottom: 18px;
-	  background-color: transparent;
 	   border-left: solid 4px royalblue; 
 	   padding-left: 15px; 
 	   text-align: left;
@@ -184,7 +183,7 @@ body{
 	   scrollbar-width: thin;
 	   min-width: 30%;
 	   min-height: 20%;
-	   max-width:80%;
+	   max-width:70%;
 	  border-top: none;
 	  border-right: none;
 	  border-bottom: none;

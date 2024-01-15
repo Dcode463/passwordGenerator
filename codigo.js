@@ -409,7 +409,7 @@ let content;
 const openViewData = (data) => {
 	objectDocument.containerKeys.close();
   objectDocument.containerView.open();
-  objectDocument.passwordView.value = data.password;
+  objectDocument.passwordView.textContent = data.password;
   matrizID = data.id;
   content = data.content;
 }
@@ -459,3 +459,6 @@ objectDocument.borrarView.onclick = () => deleteKeys();
 objectDocument.searchInput.onkeyup = () => searchKey();
 
 objectDocument.searchKeyButon.onclick = () => searchKey();
+
+if('indexedDB' in window) alert('Tu dispositivo si es compatible con indexedDB')
+else alert ('Tu dispositivo no es compatible con indexedDB')
