@@ -241,6 +241,7 @@ errorSound : document.getElementById('errorSound'),
 passwordView : document.getElementById('passwordView'),
 exitContainerView : document.getElementById('exitContainerView'),
 copiarView : document.getElementById('copiarView'),
+borrarView : document.getElementById('borrarView'),
 /// buttons of saveKey
 buttonCancelSave : document.getElementById('saveCancel'),
 buttonSave : document.getElementById('saveConfirm')
@@ -281,10 +282,32 @@ const requestPasswords = () => new Promise ((resolve,reject) => {
 		 trasaction.onerror = (e) => reject(e)
 }
 })
-const whatMyKeyid = nameKey => 
-{
-return console.log('sss')
-}
+const whatMyKeyid = async nameKey => new Promise ( async (resolve, reject)=> {
+	const keys = [];
+	const commits = [];
+	let commitsRequest =  await requestPasswords();
+	commitsRequest.forEach(commit => {
+		commits.push(commit.commit)
+	});
+	let dataBase = indexedDB.open('memori');
+	dataBase.onsuccess = () => {
+	let	dt = dataBase.result;
+	let trasaction = dt.transaction('memori', 'readwrite');
+	let storage = trasaction.objectStore('memori');
+	let request = storage.openCursor()
+	request.onsuccess = e => {
+		if(request.result) {
+			keys.push(request.result.key)
+			request.result.continue()
+		}else {
+			   let index = commits.indexOf(nameKey)
+	resolve(keys[index])
+		}
+	} 
+	}
+	})
+
+
 const openContainerKey = async () => {
 	objectDocument.sobrePonerBody.open(); objectDocument.containerKeys.open();
 	let openDataBaseRequest = await openDataBase('memori')
@@ -297,7 +320,7 @@ for(let i = 0; i < resquestObjectKeys.length; i++){
 	let commit = document.createElement('p'); commit.classList.add ('commitPush'); commit.textContent = resquestObjectKeys[i].commit;
 	let fecha = document.createElement('p'); fecha.classList.add ('fechaPush'); fecha.textContent =  resquestObjectKeys[i].fecha;
 let whatKey = await whatMyKeyid(resquestObjectKeys[i].commit)
-divContainer.onclick = () => openViewData({password : resquestObjectKeys[i].password})
+divContainer.onclick = () => openViewData({password : resquestObjectKeys[i].password,id : whatKey, content : divContainer})
 
 // divContainer.appendChild(fecha)
 divContainer.appendChild(commit); 
@@ -337,16 +360,28 @@ let validorCommitId = await validorIdCommit(objectDocument.inputCommitS.value)
 			else objectDocument.objectFunctionCommitAlert(true, 'Hmm, Ya tienes registrado ese comentario')
 }
 let matrizID;
+let content;
 const openViewData = (data) => {
 	objectDocument.containerKeys.close();
   objectDocument.containerView.open();
   objectDocument.passwordView.textContent = data.password;
-  matrizID = data.id
+  matrizID = data.id;
+  content = data.content;
 }
 const closeViewData = () => 
 {
 	objectDocument.containerKeys.open();
 	objectDocument.containerView.close();
+}
+const deleteKeys = () => {
+let dataBase = indexedDB.open('memori');
+dataBase.onsuccess = () => {
+	 let dt = dataBase.result;
+	let trasaction = dt.transaction('memori', 'readwrite');
+	let object = trasaction.objectStore('memori');
+	object.delete(matrizID)
+	trasaction.oncomplete = () => {closeViewData(); content.style.transform = 'translate(-110%,-10%)'; setTimeout(()=> objectDocument.containerPushPassword.element.removeChild(content), 1000);}
+}
 }
 //////////////////////////////////////////////////// Events
 
@@ -369,3 +404,5 @@ objectDocument.buttonSave.onclick = () => saveKeyFunction()
 objectDocument.exitContainerView.onclick = () => closeViewData();
 
 objectDocument.copiarView.onclick = () => {contentGenradorItemTwo = objectDocument.passwordView; copiar(document.getElementById('passwordView'))}
+
+objectDocument.borrarView.onclick = () => deleteKeys()
