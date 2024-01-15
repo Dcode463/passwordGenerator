@@ -231,7 +231,6 @@ alertCommit : {
 textContainer : document.getElementById('commentALERT'),
 objectFunctionCommitAlert :  (funcion,alerta) => {
   if(funcion) {
-objectDocument.inputCommitS.focus()
 objectDocument.errorSound.play()
 	objectDocument.alertCommit.element.style.opacity = '1'
 objectDocument.alertCommit.open(); setTimeout(()=> {objectDocument.alertCommit.element.style.opacity = '0'},2500);
