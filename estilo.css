@@ -23,7 +23,7 @@ body{
 	z-index: 50000;
 	position: absolute;
 	left: 90%;
-	bottom:10%;
+	top:10%;
 	transform: translate(-90%,-10%);
 	background-color: white;
 	color: black;
