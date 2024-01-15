@@ -357,7 +357,7 @@ let validorCommitId = await validorIdCommit(objectDocument.inputCommitS.value)
 			   objectDocument.sobrePonerBody.close(); objectDocument.containerSaveKey.close();
 			},1000)}
 			}else if (validorCommitId) objectDocument.objectFunctionCommitAlert(true, 'Ingrese Un comentario para registralo')
-			else objectDocument.objectFunctionCommitAlert(true, 'Hmm, Ya tienes registrado ese comentario')
+			else objectDocument.objectFunctionCommitAlert(true, `Ups, ya tienes registrado a '${objectDocument.inputCommitS.value}'`)
 }
 let matrizID;
 let content;
