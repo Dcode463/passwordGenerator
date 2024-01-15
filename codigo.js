@@ -318,7 +318,6 @@ const openContainerKey = async (funcion) => {
 if(funcion) matrizOne = resquestObjectKeys 
 else if (funcion === false) matrizOne = resquestObjectKeys.filter(e => e.commit.includes(objectDocument.searchInput.value))
 if(matrizOne.length === 0) matrizOne = resquestObjectKeys.filter(e => e.password.includes(objectDocument.searchInput.value))
-console.log(matrizOne)
 if(resquestObjectKeys.length === 0) { objectDocument.noKeysContainerKey.open(); objectDocument.containerKeys.element.classList.replace('two','one')}
 else { objectDocument.noKeysContainerKey.close(); objectDocument.containerKeys.element.classList.replace('one','two')
 for(let i = 0; i < matrizOne.length; i++){

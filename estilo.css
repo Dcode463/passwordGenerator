@@ -72,6 +72,10 @@ body{
 	border-radius: 10px;
 	border: none;
     padding: 6px;
+	height: 100%;
+}
+#searchInput::placeholder{
+	opacity: 1;
 }
 #searchKey{
 	border: none;
@@ -422,7 +426,7 @@ text-align: left;
 .contentFor{
 	position: relative;
 	padding: 50px;
-	background-image: linear-gradient(to right top, #3d0e71, #41238e, #4036ac, #364acb, #125eeb);
+	background-image: linear-gradient(to right top, #6d327c, #485DA6, #00a1ba, #00BF98, #36C486);
 	height: 100vh;
 	overflow-x: hidden;
 }
