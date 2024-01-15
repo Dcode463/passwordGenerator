@@ -3,7 +3,6 @@
 
 }
 body{
-	background:   #1c2833 ;
 	height: 100vh;
 	max-height: 100vh;
 }#navOfSearchKey{
@@ -423,7 +422,7 @@ text-align: left;
 .contentFor{
 	position: relative;
 	padding: 50px;
-	background: #1c1c1c;
+	background-image: linear-gradient(to right top, #3d0e71, #41238e, #4036ac, #364acb, #125eeb);
 	height: 100vh;
 	overflow-x: hidden;
 }
