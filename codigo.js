@@ -144,7 +144,7 @@ rangeSegurity.style.background = 'red';
 commentSegurity.innerHTML = ' <i class="iconsegurity fa-regular fa-face-dizzy"></i> Hasta mi abuela te hakea'
 
   }
-  else if (valorRango  >= 6 && valorRango < 10)
+  else if (valorRango  >= 5 && valorRango < 12)
 	  {
 		  rangeSegurity.style.width = '25%';
 		  rangeSegurity.style.background = 'rgb(255, 140, 0)';
@@ -156,12 +156,12 @@ commentSegurity.innerHTML = ' <i class="iconsegurity fa-regular fa-face-dizzy"><
 		  commentSegurity.innerHTML = '<i class=" iconsegurity fa-regular fa-face-grin"></i> Seguridad Alta' 
 
 	  }
-	  else if(valorRango >= 18 && valorRango <= 25) {
+	  else if(valorRango >= 16 && valorRango <= 30) {
 		  rangeSegurity.style.width = '45%';
 		  rangeSegurity.style.background = 'rgb(221, 255, 0)';
 		  commentSegurity.innerHTML = '<i class=" iconsegurity fa-regular fa-face-grin-beam"></i> Seguridad Super Alta'
 	  }
-	  else if(valorRango >= 30 && valorRango <= 45) { 
+	  else if(valorRango >= 31 && valorRango <= 45) { 
 		  rangeSegurity.style.width = '75%';
 		  rangeSegurity.style.background = 'rgb(132, 255, 0)';
 		  commentSegurity.innerHTML = '<i class="iconsegurity fa-solid fa-ghost"></i> Modo Ghost'
