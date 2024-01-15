@@ -741,3 +741,6 @@ input{
 		width: 100%;
 	}
 }
+button { 
+	user-select: none;
+}
