@@ -258,6 +258,14 @@ const openDataBase = nameDataBase => new Promise ((resolve,reject) => {
 	dataBase.onsuccess = () => resolve (false);
    dataBase.onerror = () => resolve(20);
 	})
+	alert('Comprobando Base de datos.... (Has click en aceptar)')
+	tes()
+async function tes () {
+let request =  await openDataBase('memori');
+if (request) alert('Creando base de datos')
+else if(request === false)alert('Base de datos ya estaba inicializada')
+else if(request / 2 === 10) alert('Error al abrir la base de datos')
+}
 const pushDataBase = (password, commit, date) => new Promise ((resolve,reject) => {
 	let dt = indexedDB.open('memori');
 	dt.onsuccess = () => {
