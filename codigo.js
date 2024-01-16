@@ -300,6 +300,7 @@ const openDataBase = nameDataBase => new Promise ((resolve,reject) => {
 	dataBase.onsuccess = () => resolve (false);
    dataBase.onerror = () => resolve(20);
 	})
+openDataBase() // abrir base de datos
 const pushDataBase = (password, commit, date) => new Promise ((resolve,reject) => {
 	let dt = indexedDB.open('memori');
 	dt.onsuccess = () => {
@@ -312,7 +313,8 @@ const pushDataBase = (password, commit, date) => new Promise ((resolve,reject) =
 		 trasaction.onerror = () => reject(true);
 	}
   })
-const requestPasswords = () => new Promise ((resolve,reject) => {
+const requestPasswords = () => new Promise ( async (resolve,reject) => {
+	let dtb = await openDataBase()
 	let db = indexedDB.open('memori');
 	  db.onsuccess = () => {
          let rs = db.result;
